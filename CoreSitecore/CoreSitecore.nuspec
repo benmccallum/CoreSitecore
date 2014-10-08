@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$id$</title>
+        <authors>Ben McCallum</authors>
+        <owners>Ben McCallum</owners>
+        <projectUrl>http://github.com/benmccallum/CoreSitecore</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A library of core helpers, extensions, constants, enums and other useful things for Sitecore CMS projects.</description>
+        <tags>Core Web Sitecore CMS API Library Extensions Helpers Common</tags>
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Data" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Web" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+			<frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
+		</frameworkAssemblies>
+    </metadata>
+</package>
