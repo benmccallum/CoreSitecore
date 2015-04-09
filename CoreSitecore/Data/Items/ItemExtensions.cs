@@ -1,4 +1,5 @@
-﻿using Sitecore.Data;
+﻿using CoreSitecore.Caching;
+using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
@@ -412,5 +413,40 @@ public static class ItemExtensions
             testItem = testItem.Axes.GetPreviousSibling();
         }
         return null;
+    }
+
+    /// <summary>
+    /// Is this item under /sitecore/templates node in the content tree and therefore likely a template?
+    /// </summary>
+    /// <param name="item">Test item.</param>
+    /// <returns></returns>
+    public static bool IsTemplateItem(this Item item)
+    {
+        return item.Paths.IsTemplateItem();
+    }
+
+    /// <summary>
+    /// Clears the item's cache on it's current database.
+    /// </summary>
+    /// <param name="item">Item to remove from all the caches.</param>
+    public static void ClearCache(this Item item)
+    {
+        var db = item.Database;
+
+        // Clear item's Item Cache
+        db.Caches.ItemCache.RemoveItem(item.ID);
+
+        // Clear item's Data Cache
+        db.Caches.DataCache.RemoveItemInformation(item.ID);
+
+        // Clear item's Standard Value Cache
+        db.Caches.StandardValuesCache.RemoveKeysContaining(item.ID.ToString());
+
+        // Clear item's Prefetch Cache
+        var sqlPrefetchCache = CacheManagerEx.GetSqlPrefetchCache(db.Name);
+        if (sqlPrefetchCache != null)
+        {
+            sqlPrefetchCache.Remove(item);
+        }
     }
 }
