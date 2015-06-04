@@ -57,6 +57,7 @@
     <Compile Include="Caching\CacheManagerEx.cs" />
     <Compile Include="Data\ItemPathExtensions.cs" />
     <Compile Include="Data\Items\ItemAdapter.cs" />
+    <Compile Include="Links\UrlOptionsExtensions.cs" />
     <Compile Include="Sys\StringExtensions.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Web\UI\DynamicKeyPlaceholder.cs" />

@@ -165,12 +165,8 @@ public static class ItemExtensions
     public static string GetItemUrl(this Item item, bool absolutePath = false)
     {
         Assert.ArgumentNotNull(item, "item");
-        if (absolutePath)
-        {
-            var options = new UrlOptions { AlwaysIncludeServerUrl = true };
-            return LinkManager.GetItemUrl(item, options);
-        }
-        return LinkManager.GetItemUrl(item);
+
+        return absolutePath ? item.GetItemUrl(UrlOptions.DefaultOptions.ButAbsolute()) : LinkManager.GetItemUrl(item);
     }
 
     /// <summary>
