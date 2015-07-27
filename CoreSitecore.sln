@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSitecore", "CoreSitecore\CoreSitecore.csproj", "{3F8B4358-ED93-40EF-AD1C-E17F55886B5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreSitecore.Tests", "CoreSitecore.Tests\CoreSitecore.Tests.csproj", "{768BFEE0-5145-4EF2-ADC0-F28CBBA434AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".global", ".global", "{0E6D3E40-9BA8-4A22-9C48-CCB9EA602566}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		CoreSitecore\CoreSitecore.nuspec = CoreSitecore\CoreSitecore.nuspec
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

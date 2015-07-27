@@ -5,5 +5,10 @@ CoreSitecore
 A library of core helpers, extensions, constants, enums and other useful things for Sitecore CMS projects.
 
 ## Get it on NuGet!
+### For Sitecore 7.0, use latest 1.* version:
+
+    Install-Package CoreSitecore -Version 1.0.2
+	
+### For Sitecore 7.5, use:
 
     Install-Package CoreSitecore

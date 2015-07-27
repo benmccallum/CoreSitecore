@@ -40,7 +40,8 @@
     <Reference Include="CoreWeb">
       <HintPath>..\packages\CoreWeb.1.0.7.0\lib\net45\CoreWeb.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel">
+    <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CoreSitecore.Dependencies\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
