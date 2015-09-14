@@ -11,4 +11,8 @@ A library of core helpers, extensions, constants, enums and other useful things 
 	
 ### For Sitecore 7.5, use:
 
+    Install-Package CoreSitecore -Version 7.5.0
+
+### For Sitecore 8.0, use:
+
     Install-Package CoreSitecore
