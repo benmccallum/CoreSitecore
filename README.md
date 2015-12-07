@@ -8,11 +8,15 @@ A library of core helpers, extensions, constants, enums and other useful things 
 ### For Sitecore 7.0, use latest 1.* version:
 
     Install-Package CoreSitecore -Version 1.0.2
-	
+
 ### For Sitecore 7.5, use:
 
     Install-Package CoreSitecore -Version 7.5.0
 
 ### For Sitecore 8.0, use:
+
+    Install-Package CoreSitecore -Version 8.0.0
+
+### For Sitecore 8.1, use:
 
     Install-Package CoreSitecore
