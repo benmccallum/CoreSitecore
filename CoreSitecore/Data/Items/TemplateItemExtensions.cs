@@ -33,6 +33,24 @@ public static class TemplateItemExtensions
 
     public static bool InheritsTemplate(this TemplateItem templateItem, ID testInheritedTemplateID)
     {
-        return templateItem.GetAllBaseTemplates().Any(ti => ti.ID == testInheritedTemplateID);
+        if (templateItem.ID.Equals(templateId))
+        {
+            return true;
+        }
+
+        foreach (var template in templateItem.BaseTemplates)
+        {
+            if (template.ID.Equals(templateId))
+            {
+                return true;
+            }
+
+            if (template.InheritsFrom(templateId))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
