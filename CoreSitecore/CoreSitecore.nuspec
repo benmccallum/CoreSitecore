@@ -10,15 +10,16 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>A library of core helpers, extensions, constants, enums and other useful things for Sitecore CMS projects.</description>
         <tags>Core Web Sitecore CMS API Library Extensions Helpers Common</tags>
-		<frameworkAssemblies>
-			<frameworkAssembly assemblyName="System" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Data" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Web" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Xml" targetFramework="" />
-			<frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
-		</frameworkAssemblies>
+		    <frameworkAssemblies>
+			    <frameworkAssembly assemblyName="System" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+          <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Data" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+			    <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework="" />
+		    </frameworkAssemblies>
     </metadata>
 </package>

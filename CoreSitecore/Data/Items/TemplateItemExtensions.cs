@@ -31,7 +31,7 @@ public static class TemplateItemExtensions
         }
     }
 
-    public static bool InheritsTemplate(this TemplateItem templateItem, ID testInheritedTemplateID)
+    public static bool InheritsTemplate(this TemplateItem templateItem, ID templateId)
     {
         if (templateItem.ID.Equals(templateId))
         {
@@ -45,7 +45,7 @@ public static class TemplateItemExtensions
                 return true;
             }
 
-            if (template.InheritsFrom(templateId))
+            if (template.InheritsTemplate(templateId))
             {
                 return true;
             }
