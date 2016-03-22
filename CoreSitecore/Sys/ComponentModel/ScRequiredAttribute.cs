@@ -6,7 +6,7 @@ using System.Web.Mvc;
 namespace CoreSitecore.Sys.ComponentModel
 {
     /// <summary>
-    /// A Required field attribute that gets the error message to use from the Sitecore Dictionary (localised to current language).
+    /// A Required attribute that gets the error message to use from the Sitecore Dictionary (localised to current language).
     /// </summary>
     public class ScRequiredAttribute : RequiredAttribute, IClientValidatable
     {

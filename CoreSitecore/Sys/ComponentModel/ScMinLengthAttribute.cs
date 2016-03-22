@@ -5,6 +5,9 @@ using System.Web.Mvc;
 
 namespace CoreSitecore.Sys.ComponentModel
 {
+    /// <summary>
+    /// A MinLength attribute that gets the error message to use from the Sitecore Dictionary (localised to current language).
+    /// </summary>
     public class ScMinLengthAttribute : MinLengthAttribute, IClientValidatable
     {
         private readonly string _dictionaryKey;

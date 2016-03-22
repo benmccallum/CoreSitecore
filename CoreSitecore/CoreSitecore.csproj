@@ -93,6 +93,7 @@
     <Compile Include="Sys\ComponentModel\ScMinLengthAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScRegularExpressionAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScMaxLengthAttribute.cs" />
+    <Compile Include="Sys\ComponentModel\ScCompareAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScRequiredAttribute.cs" />
     <Compile Include="Sys\StringExtensions.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />

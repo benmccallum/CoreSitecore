@@ -5,6 +5,9 @@ using System.Web.Mvc;
 
 namespace CoreSitecore.Sys.ComponentModel
 {
+    /// <summary>
+    /// A MaxLength attribute that gets the error message to use from the Sitecore Dictionary (localised to current language).
+    /// </summary>
     public class ScMaxLengthAttribute : MaxLengthAttribute, IClientValidatable
     {
         private readonly string _dictionaryKey;
