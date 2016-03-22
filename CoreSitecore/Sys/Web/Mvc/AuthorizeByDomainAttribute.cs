@@ -1,4 +1,5 @@
-﻿using Sitecore.Data;
+﻿using Sitecore.Configuration;
+using Sitecore.Data;
 using System;
 using System.Web;
 using System.Web.Mvc;
@@ -13,15 +14,14 @@ namespace CoreSitecore.Sys.Web.Mvc
         private readonly string _domainName;
 
         /// <summary>
-        /// If specified, on an unauthorized request, user will be redirected to this url.
+        /// If specified, on an unauthorized request, user will be redirected to a url found by inspecting this setting.
+        ///
+        /// If this setting is an Sitecore.Data.ID, the url to that item will be used.
+        /// Else, it will be assumed to be a URL that can be redirected to as is.
+        ///
+        /// Default: CoreSitecore.AuthorizeByDomainAttribute.DefaultRedirectUrl
         /// </summary>
-        public string RedirectToUrl { get; set; }
-
-        /// <summary>
-        /// If specified, on an unauthorized request, user will be redirected to Sitecore Item with this ID.
-        /// RedirectToUrl takes precedence though if set.
-        /// </summary>
-        public Guid? RedirectToItemWithId { get; set; }
+        public string RedirectUrlSettingName { get; set; }
 
         /// <summary>
         /// If true, will append returnUrl querystring to url of redirected to page to support kickback later.
@@ -53,16 +53,25 @@ namespace CoreSitecore.Sys.Web.Mvc
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             var redirectionUrl = string.Empty;
-            if (!string.IsNullOrWhiteSpace(RedirectToUrl))
+
+            var settingName = string.IsNullOrWhiteSpace(RedirectUrlSettingName) ? "CoreSitecore.AuthorizeByDomainAttribute.DefaultRedirectUrl" : RedirectUrlSettingName;
+            var settingValue = Settings.GetSetting(settingName);
+
+            if (!string.IsNullOrWhiteSpace(settingValue))
             {
-                redirectionUrl = RedirectToUrl;
-            }
-            else if (RedirectToItemWithId.HasValue)
-            {
-                var itemToRedirectTo = Sitecore.Context.Database.GetItem(new ID(RedirectToItemWithId.Value));
-                if (itemToRedirectTo != null)
+                // If ID, lookup item by ID and figure out it's URL
+                if (ID.IsID(settingValue))
                 {
-                    redirectionUrl = itemToRedirectTo.GetItemUrl();
+                    var itemToRedirectTo = Sitecore.Context.Database.GetItem(new ID(settingValue));
+                    if (itemToRedirectTo != null)
+                    {
+                        redirectionUrl = itemToRedirectTo.GetItemUrl();
+                    }
+                }
+                else
+                {
+                    // Assume is url
+                    redirectionUrl = settingValue;
                 }
             }
 
