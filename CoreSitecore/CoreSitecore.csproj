@@ -96,6 +96,7 @@
     <Compile Include="Sys\ComponentModel\ScRequiredAttribute.cs" />
     <Compile Include="Sys\StringExtensions.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
+    <Compile Include="Sys\Web\Mvc\ValidateFormHandler.cs" />
     <Compile Include="Web\UI\DynamicKeyPlaceholder.cs" />
     <Compile Include="Web\UI\LayoutBase.cs">
       <SubType>ASPXCodeBehind</SubType>
