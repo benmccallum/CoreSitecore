@@ -89,6 +89,7 @@
     <Compile Include="Data\Items\ItemAdapter.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Links\UrlOptionsExtensions.cs" />
+    <Compile Include="Sys\ComponentModel\ScDisplayNameAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScEmailAddressAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScMinLengthAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScRegularExpressionAttribute.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Sys\ComponentModel\ScRequiredAttribute.cs" />
     <Compile Include="Sys\StringExtensions.cs" />
     <Compile Include="Helpers\UrlHelper.cs" />
+    <Compile Include="Sys\Web\Mvc\AuthorizeByDomainAttribute.cs" />
+    <Compile Include="Sys\Web\Mvc\AuthorizeExtranetAttribute.cs" />
     <Compile Include="Sys\Web\Mvc\ValidateFormHandler.cs" />
     <Compile Include="Web\UI\DynamicKeyPlaceholder.cs" />
     <Compile Include="Web\UI\LayoutBase.cs">
