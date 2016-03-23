@@ -1,6 +1,6 @@
 ﻿using Sitecore.Configuration;
 using Sitecore.Data;
-using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,7 +11,9 @@ namespace CoreSitecore.Sys.Web.Mvc
     /// </summary>
     public class AuthorizeByDomainAttribute : AuthorizeAttribute
     {
-        private readonly string _domainName;
+        private const string DefaultRedirectUrlSettingName = "CoreSitecore.Authorization.DefaultUnauthorizedRedirectUrl";
+
+        private readonly string[] _domainNames;
 
         /// <summary>
         /// If specified, on an unauthorized request, user will be redirected to a url found by inspecting this setting.
@@ -35,26 +37,31 @@ namespace CoreSitecore.Sys.Web.Mvc
         /// </summary>
         public string ReturnUrlQueryStringKey { get; set; }
 
-        public AuthorizeByDomainAttribute(string domainName)
+        public AuthorizeByDomainAttribute(string[] domainNames)
         {
-            _domainName = domainName;
+            _domainNames = domainNames;
 
             // Defaults
             AppendReturnUrlQueryString = true;
             ReturnUrlQueryStringKey = "returnUrl";
         }
 
+        /// <summary>
+        /// Overrides the default Authorize logic, checking that a user
+        /// </summary>
+        /// <param name="httpContext"></param>
+        /// <returns></returns>
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             var user = Sitecore.Context.User;
-            return user != null && user.IsAuthenticated && user.GetDomainName().Equals(_domainName, StringComparison.OrdinalIgnoreCase);
+            return user != null && user.IsAuthenticated && _domainNames.Contains(user.GetDomainName());
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             var redirectionUrl = string.Empty;
 
-            var settingName = string.IsNullOrWhiteSpace(RedirectUrlSettingName) ? "CoreSitecore.AuthorizeByDomainAttribute.DefaultRedirectUrl" : RedirectUrlSettingName;
+            var settingName = string.IsNullOrWhiteSpace(RedirectUrlSettingName) ? DefaultRedirectUrlSettingName : RedirectUrlSettingName;
             var settingValue = Settings.GetSetting(settingName);
 
             if (!string.IsNullOrWhiteSpace(settingValue))
@@ -70,7 +77,7 @@ namespace CoreSitecore.Sys.Web.Mvc
                 }
                 else
                 {
-                    // Assume is url
+                    // Assume is url and just use that
                     redirectionUrl = settingValue;
                 }
             }
@@ -88,6 +95,7 @@ namespace CoreSitecore.Sys.Web.Mvc
             }
             else
             {
+                // Note: This seems to just stop the view from rendering, not actually do a redirect to loginUrl in Sitecore's implementation.
                 base.HandleUnauthorizedRequest(filterContext);
             }
         }

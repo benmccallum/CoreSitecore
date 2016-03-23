@@ -128,10 +128,9 @@
     <Compile Include="Workflows\Simple\ApprovedEmailNotification.cs" />
     <Compile Include="Workflows\Simple\RejectedEmailNotification.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App_Config\CoreSitecore.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

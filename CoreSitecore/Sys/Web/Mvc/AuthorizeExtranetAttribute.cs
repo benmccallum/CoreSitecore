@@ -6,7 +6,7 @@
     public class AuthorizeExtranetAttribute : AuthorizeByDomainAttribute
     {
         public AuthorizeExtranetAttribute()
-            : base("extranet")
+            : base(new [] { "extranet" })
         {
 
         }
