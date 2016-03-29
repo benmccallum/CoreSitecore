@@ -2,7 +2,7 @@
 using Sitecore.Web.UI.WebControls;
 using System.Collections.Specialized;
 
-namespace SitecoreCore.Web.UI.WebControls
+namespace CoreSitecore.Web.UI.WebControls
 {
     /// <summary>
     /// Base class to be inherited from by all Sitecore sublayout ascx user controls.

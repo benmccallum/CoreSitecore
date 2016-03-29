@@ -34,11 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoreSystem">
-      <HintPath>..\packages\CoreSystem.1.0.5.0\lib\net45\CoreSystem.dll</HintPath>
+    <Reference Include="CoreSystem, Version=1.0.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreSystem.1.0.13.0\lib\net45\CoreSystem.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="CoreWeb">
-      <HintPath>..\packages\CoreWeb.1.0.7.0\lib\net45\CoreWeb.dll</HintPath>
+    <Reference Include="CoreWeb, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreWeb.1.1.0.0\lib\net45\CoreWeb.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -89,6 +91,9 @@
     <Compile Include="Data\Items\ItemAdapter.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Links\UrlOptionsExtensions.cs" />
+    <Compile Include="Resources\Media\ChangeJpegCompressionLevelService.cs" />
+    <Compile Include="Resources\Media\SetJpegCompressionProcessor.cs" />
+    <Compile Include="Sys\ComponentModel\ScPasswordStrengthAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScDisplayNameAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScEmailAddressAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScMinLengthAttribute.cs" />
@@ -128,7 +133,9 @@
     <Compile Include="Workflows\Simple\ApprovedEmailNotification.cs" />
     <Compile Include="Workflows\Simple\RejectedEmailNotification.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="readme.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App_Config\CoreSitecore.config" />
     <None Include="packages.config" />
