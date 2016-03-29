@@ -134,9 +134,6 @@
     <Compile Include="Workflows\Simple\RejectedEmailNotification.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App_Config\CoreSitecore.config" />
     <None Include="packages.config" />
   </ItemGroup>
