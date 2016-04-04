@@ -1,4 +1,5 @@
-﻿using Sitecore.Configuration;
+﻿using CoreSitecore.Helpers;
+using Sitecore.Configuration;
 using Sitecore.Data;
 using System.Linq;
 using System.Web;
@@ -21,7 +22,7 @@ namespace CoreSitecore.Sys.Web.Mvc
         /// If this setting is an Sitecore.Data.ID, the url to that item will be used.
         /// Else, it will be assumed to be a URL that can be redirected to as is.
         ///
-        /// Default: CoreSitecore.AuthorizeByDomainAttribute.DefaultRedirectUrl
+        /// Default: "CoreSitecore.Authorization.DefaultUnauthorizedRedirectUrl"
         /// </summary>
         public string RedirectUrlSettingName { get; set; }
 
@@ -59,28 +60,7 @@ namespace CoreSitecore.Sys.Web.Mvc
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            var redirectionUrl = string.Empty;
-
-            var settingName = string.IsNullOrWhiteSpace(RedirectUrlSettingName) ? DefaultRedirectUrlSettingName : RedirectUrlSettingName;
-            var settingValue = Settings.GetSetting(settingName);
-
-            if (!string.IsNullOrWhiteSpace(settingValue))
-            {
-                // If ID, lookup item by ID and figure out it's URL
-                if (ID.IsID(settingValue))
-                {
-                    var itemToRedirectTo = Sitecore.Context.Database.GetItem(new ID(settingValue));
-                    if (itemToRedirectTo != null)
-                    {
-                        redirectionUrl = itemToRedirectTo.GetItemUrl();
-                    }
-                }
-                else
-                {
-                    // Assume is url and just use that
-                    redirectionUrl = settingValue;
-                }
-            }
+            var redirectionUrl = RedirectHelper.GetRedirectUrlFromSetting(RedirectUrlSettingName, DefaultRedirectUrlSettingName);
 
             if (!string.IsNullOrWhiteSpace(redirectionUrl))
             {
@@ -95,7 +75,6 @@ namespace CoreSitecore.Sys.Web.Mvc
             }
             else
             {
-                // Note: This seems to just stop the view from rendering, not actually do a redirect to loginUrl in Sitecore's implementation.
                 base.HandleUnauthorizedRequest(filterContext);
             }
         }

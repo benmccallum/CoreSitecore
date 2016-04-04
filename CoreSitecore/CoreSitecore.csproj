@@ -46,9 +46,18 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Sitecore.Analytics">
+      <HintPath>..\CoreSitecore.Dependencies\Sitecore.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Model">
+      <HintPath>..\CoreSitecore.Dependencies\Sitecore.Analytics.Model.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CoreSitecore.Dependencies\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Social">
+      <HintPath>..\CoreSitecore.Dependencies\Sitecore.Social.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -86,7 +95,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analytics\Model\Framework\IElementDictionaryExtensions.cs" />
+    <Compile Include="Helpers\RedirectHelper.cs" />
+    <Compile Include="Social\Connector\Facets\Contact\SocialProfile\IFieldElementExtensions.cs" />
     <Compile Include="Caching\CacheManagerEx.cs" />
+    <Compile Include="Analytics\Tracking\ContactExtensions.cs" />
     <Compile Include="Data\ItemPathExtensions.cs" />
     <Compile Include="Data\Items\ItemAdapter.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
@@ -105,6 +118,7 @@
     <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Sys\Web\Mvc\AuthorizeByDomainAttribute.cs" />
     <Compile Include="Sys\Web\Mvc\AuthorizeExtranetAttribute.cs" />
+    <Compile Include="Sys\Web\Mvc\RedirectExtranetUsers.cs" />
     <Compile Include="Sys\Web\Mvc\ValidateFormHandler.cs" />
     <Compile Include="Web\UI\DynamicKeyPlaceholder.cs" />
     <Compile Include="Web\UI\LayoutBase.cs">
