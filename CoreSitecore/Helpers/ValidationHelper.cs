@@ -7,7 +7,7 @@ namespace CoreSitecore.Helpers
     /// <summary>
     /// Helper for Sitecore validation.
     /// </summary>
-    internal static class ValidationHelper
+    public static class ValidationHelper
     {
         /// <summary>
         /// Gets a localised error message from the Sitecore CMS dictionary given a key.
