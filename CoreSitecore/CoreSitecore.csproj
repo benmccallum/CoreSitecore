@@ -106,6 +106,7 @@
     <Compile Include="Links\UrlOptionsExtensions.cs" />
     <Compile Include="Resources\Media\ChangeJpegCompressionLevelService.cs" />
     <Compile Include="Resources\Media\SetJpegCompressionProcessor.cs" />
+    <Compile Include="Sys\ComponentModel\ScStringLengthAdapter.cs" />
     <Compile Include="Sys\ComponentModel\ScStringLengthAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScPasswordStrengthAttribute.cs" />
     <Compile Include="Sys\ComponentModel\ScDisplayNameAttribute.cs" />
