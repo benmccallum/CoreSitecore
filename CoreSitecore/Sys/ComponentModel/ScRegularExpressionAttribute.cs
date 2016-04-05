@@ -34,7 +34,7 @@ namespace CoreSitecore.Sys.ComponentModel
 
         public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
         {
-            return ValidationHelper.GetClientValidationRules(metadata, "regularexpression", _dictionaryKey);
+            return new RegularExpressionAttributeAdapter(metadata, context, this).GetClientValidationRules();
         }
     }
 }

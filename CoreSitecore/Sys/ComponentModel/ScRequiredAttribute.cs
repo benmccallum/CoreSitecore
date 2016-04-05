@@ -32,7 +32,7 @@ namespace CoreSitecore.Sys.ComponentModel
 
         public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
         {
-            return ValidationHelper.GetClientValidationRules(metadata, "required", _dictionaryKey);
+            return new RequiredAttributeAdapter(metadata, context, this).GetClientValidationRules();
         }
     }
 }

@@ -22,9 +22,9 @@ namespace CoreSitecore.Helpers
         /// <summary>
         /// Gets the client validation rules, where the validation message is a localised error message from the Sitecore CMS dictionary given a key.
         /// </summary>
-        /// <param name="metadata"></param>
-        /// <param name="validationType"></param>
-        /// <param name="dictionaryKey">Key in the Sitecore dictionary.</param>
+        /// <param name="metadata">Model metadata</param>
+        /// <param name="validationType">Validation type "key"</param>
+        /// <param name="dictionaryKey">Key in the Sitecore dictionary to retrieve validation error message with.</param>
         /// <returns></returns>
         public static List<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, string validationType, string dictionaryKey)
         {
@@ -35,8 +35,8 @@ namespace CoreSitecore.Helpers
             };
 
             modelClientValidationRule.ValidationParameters.Add("param", metadata.PropertyName);
-            var rules = new List<ModelClientValidationRule> { modelClientValidationRule };
-            return rules;
+
+            return new List<ModelClientValidationRule> { modelClientValidationRule };
         }
     }
 }

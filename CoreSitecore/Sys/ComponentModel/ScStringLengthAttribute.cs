@@ -1,12 +1,14 @@
 ﻿using CoreSitecore.Helpers;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace CoreSitecore.Sys.ComponentModel
 {
     /// <summary>
     /// A StringLength attribute that gets the error message to use from the Sitecore Dictionary (localised to current language).
     /// </summary>
-    public class ScStringLengthAttribute : StringLengthAttribute
+    public class ScStringLengthAttribute : StringLengthAttribute, IClientValidatable
     {
         private readonly string _dictionaryKey;
 
@@ -28,6 +30,11 @@ namespace CoreSitecore.Sys.ComponentModel
             ErrorMessage = ValidationHelper.GetErrorMessage(_dictionaryKey);
 
             return base.IsValid(value, validationContext);
+        }
+
+        public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        {
+            return new StringLengthAttributeAdapter(metadata, context, this).GetClientValidationRules();
         }
     }
 }

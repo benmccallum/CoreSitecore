@@ -1,6 +1,8 @@
 ﻿using CoreSitecore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace CoreSitecore.Sys.ComponentModel
@@ -8,7 +10,7 @@ namespace CoreSitecore.Sys.ComponentModel
     /// <summary>
     /// A Compare attribute that gets the error message to use from the Sitecore Dictionary (localised to current language).
     /// </summary>
-    public class ScCompareAttribute : System.ComponentModel.DataAnnotations.CompareAttribute, IClientValidatable
+    public class ScCompareAttribute : System.Web.Mvc.CompareAttribute, IClientValidatable
     {
         private readonly string _dictionaryKey;
 
@@ -32,9 +34,14 @@ namespace CoreSitecore.Sys.ComponentModel
             return base.IsValid(value, validationContext);
         }
 
-        public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+        public override string FormatErrorMessage(string name)
         {
-            return ValidationHelper.GetClientValidationRules(metadata, "compare", _dictionaryKey);
+            return string.Format(
+                CultureInfo.CurrentCulture,
+                ValidationHelper.GetErrorMessage(_dictionaryKey),
+                name,
+                (this.OtherPropertyDisplayName ?? this.OtherProperty)
+            );
         }
     }
 }
