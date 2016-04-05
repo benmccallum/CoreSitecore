@@ -1,6 +1,8 @@
 ﻿using CoreSitecore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace CoreSitecore.Sys.ComponentModel
@@ -30,6 +32,11 @@ namespace CoreSitecore.Sys.ComponentModel
             ErrorMessage = ValidationHelper.GetErrorMessage(_dictionaryKey);
 
             return base.IsValid(value, validationContext);
+        }
+
+        public override string FormatErrorMessage(string name)
+        {
+            return String.Format(CultureInfo.CurrentCulture, ValidationHelper.GetErrorMessage(_dictionaryKey), name, MaximumLength, MinimumLength);
         }
 
         public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
