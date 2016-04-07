@@ -30,6 +30,11 @@ namespace CoreSitecore.Sys.ComponentModel
             return base.IsValid(value, validationContext);
         }
 
+        public override string FormatErrorMessage(string name)
+        {
+            return string.Format(ValidationHelper.GetErrorMessage(_dictionaryKey), name);
+        }
+
         public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
         {
             return new RequiredAttributeAdapter(metadata, context, this).GetClientValidationRules();
