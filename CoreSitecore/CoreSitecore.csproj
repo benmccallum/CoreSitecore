@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Analytics\Model\Framework\IElementDictionaryExtensions.cs" />
     <Compile Include="Helpers\RedirectHelper.cs" />
+    <Compile Include="Security\Accounts\UserExtensions.cs" />
     <Compile Include="Social\Connector\Facets\Contact\SocialProfile\IFieldElementExtensions.cs" />
     <Compile Include="Caching\CacheManagerEx.cs" />
     <Compile Include="Analytics\Tracking\ContactExtensions.cs" />
